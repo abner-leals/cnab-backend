@@ -8,7 +8,7 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path("cnab/", CreateTransaction.as_view()),
-    path("balanco/", ListBalance.as_view()),
+    path("balance/", ListBalance.as_view()),
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "schema/swagger-ui/",

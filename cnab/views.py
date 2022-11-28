@@ -28,7 +28,7 @@ class CreateTransaction(generics.CreateAPIView):
                         "type": type,
                         "day": f"{line[1:5]}-{line[5:7]}-{line[7:9]}",
                         "value": float(line[9:19]) / 100,
-                        "cpf": int(line[19:30]),
+                        "cpf": (line[19:30]),
                         "card": line[30:42],
                         "hour": f"{line[42:44]}:{line[44:46]}:{line[46:48]}",
                         "owner": line[48:62],
