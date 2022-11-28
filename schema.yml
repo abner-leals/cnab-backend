@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: CNAB PARSER
+  version: 1.0.0
+  description: PROJETO PARA FACILITAR A CONVERSÃO DE ARQUIVOS CNAB E ARMAZENAMENTO
+    DESSAS INFORMAÇÕES.
+paths:
+  /api/balanco/:
+    post:
+      operationId: balanco_create
+      tags:
+      - balanco
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreName'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StoreName'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StoreName'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreName'
+          description: ''
+  /api/cnab/:
+    post:
+      operationId: cnab_create
+      tags:
+      - cnab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/File'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/File'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+          description: ''
+components:
+  schemas:
+    File:
+      type: object
+      properties:
+        file:
+          type: string
+          format: uri
+      required:
+      - file
+    StoreName:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+          readOnly: true
+        store:
+          type: string
+        owner:
+          type: string
+          readOnly: true
+      required:
+      - owner
+      - store
+      - value
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
