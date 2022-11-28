@@ -19,7 +19,7 @@ A API consiste em uma conversão de arquivos CNAB em JSON, onde os dados são co
 
 ## Front end web
 
-Pré-requisitos: npm / yarn
+Pré-requisitos: python 3.10 ou superior
 
 ```bash
 # clonar repositório
